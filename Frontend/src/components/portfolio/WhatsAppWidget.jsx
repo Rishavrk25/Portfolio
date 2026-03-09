@@ -11,10 +11,10 @@ export default function WhatsAppWidget() {
   );
 
   return (
-    <div className="fixed bottom-6 left-6 z-[60] flex flex-col items-start font-sans">
+    <div className="fixed bottom-6 right-[6.5rem] z-[60] flex flex-col items-end font-sans">
       {/* Chat Window */}
       <div 
-        className={`bg-[#e5ddd5] w-[320px] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 origin-bottom-left mb-4 flex flex-col relative ${isOpen ? 'scale-100 opacity-100' : 'scale-50 opacity-0 pointer-events-none'}`}
+        className={`bg-[#e5ddd5] w-[320px] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 origin-bottom-right mb-4 flex flex-col relative ${isOpen ? 'scale-100 opacity-100' : 'scale-50 opacity-0 pointer-events-none'}`}
       >
         {/* Background Pattern Overlay */}
         <div 
