@@ -55,7 +55,7 @@ function SkillBar({ name, level, color, animate }) {
       <div className="flex justify-between items-center mb-1.5">
         <span className="text-sm font-medium text-foreground">{name}</span>
       </div>
-      <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
+      <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
         <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{
             width: animate ? `${level}%` : '0%',
             background: `linear-gradient(90deg, ${color}, ${color}cc)`,
