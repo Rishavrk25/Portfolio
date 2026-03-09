@@ -9,6 +9,7 @@ import ResumeSection from '@/components/portfolio/ResumeSection'
 import ContactSection from '@/components/portfolio/ContactSection'
 import ParticleCanvas from '@/components/portfolio/ParticleCanvas'
 import Chatbot from '@/components/portfolio/Chatbot'
+import WhatsAppWidget from '@/components/portfolio/WhatsAppWidget'
 
 const SECTIONS = ['home', 'skills', 'projects', 'certifications', 'achievements', 'resume', 'contact']
 
@@ -57,6 +58,7 @@ export default function App() {
       <ResumeSection />
       <ContactSection />
       <Chatbot />
+      <WhatsAppWidget />
     </main>
   )
 }
