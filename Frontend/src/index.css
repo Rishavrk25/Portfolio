@@ -11,13 +11,15 @@
   --card-foreground: oklch(0.95 0.01 240);
   --popover: oklch(0.14 0.022 255);
   --popover-foreground: oklch(0.95 0.01 240);
-  --primary: oklch(0.72 0.22 200);       /* Cyan/teal accent */
+  --primary: oklch(0.72 0.22 200);
+  /* Cyan/teal accent */
   --primary-foreground: oklch(0.10 0.018 255);
   --secondary: oklch(0.20 0.025 255);
   --secondary-foreground: oklch(0.85 0.01 240);
   --muted: oklch(0.18 0.022 255);
   --muted-foreground: oklch(0.60 0.02 240);
-  --accent: oklch(0.65 0.28 175);        /* Electric cyan */
+  --accent: oklch(0.65 0.28 175);
+  /* Electric cyan */
   --accent-foreground: oklch(0.10 0.018 255);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.95 0.01 240);
@@ -68,27 +70,34 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     overflow-x: hidden;
   }
+
   ::selection {
     background: oklch(0.72 0.22 200 / 0.35);
     color: oklch(0.95 0.01 240);
   }
+
   ::-webkit-scrollbar {
     width: 6px;
   }
+
   ::-webkit-scrollbar-track {
     background: oklch(0.10 0.018 255);
   }
+
   ::-webkit-scrollbar-thumb {
     background: oklch(0.30 0.05 255);
     border-radius: 999px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: oklch(0.72 0.22 200 / 0.7);
   }
@@ -96,57 +105,151 @@
 
 /* ── Keyframe Animations ── */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-14px); }
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
 }
+
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
+
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
 }
+
 @keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: oklch(0.72 0.22 200); }
+
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: oklch(0.72 0.22 200);
+  }
 }
+
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
+
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
+
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes orbit {
-  from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
 }
+
 @keyframes progress-fill {
-  from { width: 0%; }
-  to { width: var(--target-width); }
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: var(--target-width);
+  }
 }
+
 @keyframes counter-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Utility Classes ── */
-.animate-float { animation: float 4s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
-.animate-slide-up { animation: slide-up 0.7s ease forwards; }
-.animate-fade-in { animation: fade-in 0.5s ease forwards; }
-.animate-spin-slow { animation: spin-slow 20s linear infinite; }
-.animate-shimmer { animation: shimmer 3s linear infinite; }
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.7s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+}
 
 .glass-card {
   background: oklch(0.16 0.022 255 / 0.7);
@@ -156,17 +259,17 @@
 
 .glow-text {
   text-shadow: 0 0 20px oklch(0.72 0.22 200 / 0.8),
-               0 0 40px oklch(0.72 0.22 200 / 0.4);
+    0 0 40px oklch(0.72 0.22 200 / 0.4);
 }
 
 .glow-border {
   box-shadow: 0 0 0 1px oklch(0.72 0.22 200 / 0.4),
-              0 0 20px oklch(0.72 0.22 200 / 0.15);
+    0 0 20px oklch(0.72 0.22 200 / 0.15);
 }
 
 .glow-border:hover {
   box-shadow: 0 0 0 1px oklch(0.72 0.22 200 / 0.8),
-              0 0 30px oklch(0.72 0.22 200 / 0.3);
+    0 0 30px oklch(0.72 0.22 200 / 0.3);
   transition: box-shadow 0.3s ease;
 }
 
@@ -178,12 +281,10 @@
 }
 
 .shimmer-bg {
-  background: linear-gradient(
-    90deg,
-    oklch(0.18 0.022 255) 0%,
-    oklch(0.72 0.22 200 / 0.15) 50%,
-    oklch(0.18 0.022 255) 100%
-  );
+  background: linear-gradient(90deg,
+      oklch(0.18 0.022 255) 0%,
+      oklch(0.72 0.22 200 / 0.15) 50%,
+      oklch(0.18 0.022 255) 100%);
   background-size: 200% auto;
 }
 
@@ -197,6 +298,7 @@
 .noise-bg {
   position: relative;
 }
+
 .noise-bg::before {
   content: '';
   position: absolute;
@@ -208,13 +310,33 @@
 }
 
 /* Staggered animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-.delay-700 { animation-delay: 700ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
 
 /* Nav active underline */
 .nav-link-active::after {
@@ -230,8 +352,10 @@
 /* Particle canvas */
 #particle-canvas {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
   opacity: 0.45;
