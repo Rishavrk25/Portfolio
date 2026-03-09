@@ -10,6 +10,7 @@ const SKILL_CATEGORIES = [
             { name: 'C++', level: 72, icon: 'https://cdn.simpleicons.org/cplusplus' },
             { name: 'C', level: 70, icon: 'https://cdn.simpleicons.org/c' },
             { name: 'SQL', level: 78, icon: 'https://cdn.simpleicons.org/mysql/white' },
+            { name: 'DSA', level: 85, icon: 'https://cdn.simpleicons.org/codeigniter/white' },
         ],
     },
     {
@@ -41,15 +42,12 @@ const SKILL_CATEGORIES = [
             { name: 'REST APIs', level: 85, icon: 'https://cdn.simpleicons.org/postman' },
             { name: 'Razorpay API', level: 72, icon: 'https://cdn.simpleicons.org/razorpay/3395FF' },
             { name: 'Gemini API', level: 70, icon: 'https://cdn.simpleicons.org/googlegemini' },
+            { name: 'LeetCode', level: 80, icon: 'https://cdn.simpleicons.org/leetcode/white' },
+            { name: 'GeeksForGeeks', level: 80, icon: 'https://cdn.simpleicons.org/geeksforgeeks/white' },
         ],
     },
 ];
-const TECH_ICONS = [
-    'React.js', 'Node.js', 'MongoDB', 'Express.js', 'JavaScript',
-    'Java', 'C++', 'SQL', 'MySQL', 'Tailwind CSS',
-    'HTML', 'CSS', 'PHP', 'Git', 'GitHub',
-    'LeetCode', 'GFG', 'DSA', 'VS Code',
-];
+// Uncategorized cloud removed
 function SkillBar({ name, level, color, animate, icon }) {
     return (<div className="group">
       <div className="flex justify-between items-center mb-1.5">
@@ -108,15 +106,6 @@ export default function SkillsSection() {
             </div>))}
         </div>
 
-        {/* Tech badge cloud */}
-        <div className="text-center">
-          <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-6">Also worked with</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {TECH_ICONS.map((tech, i) => (<span key={tech} className={`px-4 py-2 rounded-full glass-card text-sm font-mono text-muted-foreground border-border/40 hover:text-primary hover:border-primary/40 transition-all cursor-default hover:scale-105 ${animate ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: `${500 + i * 50}ms` }}>
-                {tech}
-              </span>))}
-          </div>
-        </div>
       </div>
     </section>);
 }
