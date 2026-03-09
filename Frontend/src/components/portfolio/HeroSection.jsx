@@ -168,15 +168,21 @@ export default function HeroSection({ onNavigate }) {
             const rad = (angle * Math.PI) / 180;
             const x = Math.cos(rad) * dist;
             const y = Math.sin(rad) * dist;
-            return (<div key={label} className="absolute glass-card px-3 py-1.5 rounded-full text-xs font-mono font-semibold animate-float border border-border/60" style={{
+            return (
+                <div key={label} className="absolute" style={{
                     left: `calc(50% + ${x}px)`,
                     top: `calc(50% + ${y}px)`,
                     transform: 'translate(-50%, -50%)',
-                    color,
-                    animationDelay: `${angle / 60}s`,
+                    zIndex: 20
                 }} aria-hidden="true">
-                  {label}
-                </div>);
+                  <div className="glass-card px-3 py-1.5 rounded-full text-xs font-mono font-semibold animate-float border border-border/60" style={{
+                      color,
+                      animationDelay: `${angle / 60}s`
+                  }}>
+                    {label}
+                  </div>
+                </div>
+            );
         })}
           </div>
         </div>
