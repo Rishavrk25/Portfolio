@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { GoogleGenAI } from '@google/genai';
 
 dotenv.config();
 
@@ -60,6 +61,49 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, '../Frontend/dist/index.html'));
   });
 }
+
+// AI Chatbot Route
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { messages } = req.body;
+
+    if (!process.env.GEMINI_API_KEY) {
+      return res.status(500).json({ error: 'Gemini API key not configured' });
+    }
+
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+    // System instruction for the assistant
+    const systemInstruction = `
+You are Rishav Kumar's AI assistant for his developer portfolio. 
+You are helpful, concise, and professional. 
+Rishav is a B.Tech CSE student at Lovely Professional University.
+He focuses on the MERN stack (MongoDB, Express, React, Node.js) and DSA problem solving in Java/C++.
+Respond strictly in plain text or markdown to formatting queries about Rishav's background. Do not break character.
+    `;
+
+    // Map conversation history safely
+    const contents = messages.map(msg => ({
+      role: msg.role === 'assistant' ? 'model' : 'user', // genai expects "model" or "user"
+      parts: [{ text: msg.content }]
+    }));
+
+    // Create the chat session
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: contents,
+      config: {
+        systemInstruction: systemInstruction,
+        temperature: 0.7
+      }
+    });
+
+    res.json({ response: response.text });
+  } catch (error) {
+    console.error('Gemini API Error:', error);
+    res.status(500).json({ error: 'Failed to generate AI response' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
