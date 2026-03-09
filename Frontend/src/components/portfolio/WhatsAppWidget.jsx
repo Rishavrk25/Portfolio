@@ -11,10 +11,10 @@ export default function WhatsAppWidget() {
   );
 
   return (
-    <div className="fixed bottom-6 right-[6.5rem] z-[60] flex flex-col items-end font-sans">
+    <div className="fixed bottom-6 left-6 z-[60] flex flex-col items-start font-sans">
       {/* Chat Window */}
       <div 
-        className={`bg-[#e5ddd5] w-[320px] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 origin-bottom-right mb-4 flex flex-col relative ${isOpen ? 'scale-100 opacity-100' : 'scale-50 opacity-0 pointer-events-none'}`}
+        className={`bg-[#e5ddd5] w-[320px] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 origin-bottom-left mb-4 flex flex-col relative ${isOpen ? 'scale-100 opacity-100' : 'scale-50 opacity-0 pointer-events-none'}`}
       >
         {/* Background Pattern Overlay */}
         <div 
@@ -59,7 +59,7 @@ export default function WhatsAppWidget() {
         {/* Footer */}
         <div className="px-5 pb-5 bg-transparent flex justify-center w-full relative z-10">
           <a
-            href="https://wa.me/910000000000?text=Hello%20Rishav!"
+            href="https://wa.me/918789371641?text=Hello%20Rishav!"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3.5 rounded-full flex items-center justify-center gap-2 transition-colors shadow-sm"
