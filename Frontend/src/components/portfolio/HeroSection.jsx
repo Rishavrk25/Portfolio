@@ -151,9 +151,11 @@ export default function HeroSection({ onNavigate }) {
               <div className="absolute inset-0 rounded-full" style={{
             background: 'radial-gradient(circle at 30% 30%, oklch(0.72 0.22 200 / 0.15), oklch(0.55 0.25 265 / 0.1) 50%, transparent)',
         }} aria-hidden="true"/>
-              <span className="text-6xl lg:text-8xl font-bold gradient-text relative z-10 select-none" aria-label="RK initials">
-                RK
-              </span>
+              <img 
+                src="/avatar.jpg" 
+                alt="Rishav Kumar" 
+                className="w-full h-full object-cover relative z-10 select-none scale-105"
+              />
             </div>
 
             {/* Floating tech badges */}
