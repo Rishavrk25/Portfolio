@@ -154,7 +154,7 @@ export default function HeroSection({ onNavigate }) {
               <img 
                 src="/avatar.jpg" 
                 alt="Rishav Kumar" 
-                className="w-full h-full object-cover relative z-10 select-none scale-105"
+                className="w-full h-full object-cover relative z-10 select-none scale-[1.35] translate-y-2 pointer-events-none"
               />
             </div>
 
