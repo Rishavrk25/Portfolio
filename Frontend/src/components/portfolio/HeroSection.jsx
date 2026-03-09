@@ -160,10 +160,10 @@ export default function HeroSection({ onNavigate }) {
 
             {/* Floating tech badges */}
             {[
-            { label: 'React', angle: -30, dist: 120, color: '#61DAFB' },
-            { label: 'Node.js', angle: 60, dist: 115, color: '#68A063' },
-            { label: 'MongoDB', angle: 150, dist: 120, color: '#47A248' },
-            { label: 'Express', angle: 240, dist: 115, color: '#94a3b8' },
+            { label: 'React', angle: -30, dist: 210, color: '#61DAFB' },
+            { label: 'Node.js', angle: 60, dist: 200, color: '#68A063' },
+            { label: 'MongoDB', angle: 150, dist: 200, color: '#47A248' },
+            { label: 'Express', angle: 240, dist: 210, color: '#94a3b8' },
         ].map(({ label, angle, dist, color }) => {
             const rad = (angle * Math.PI) / 180;
             const x = Math.cos(rad) * dist;
