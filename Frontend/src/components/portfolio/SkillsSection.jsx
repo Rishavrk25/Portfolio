@@ -5,42 +5,42 @@ const SKILL_CATEGORIES = [
         title: 'Languages',
         color: 'oklch(0.72 0.22 200)',
         skills: [
-            { name: 'JavaScript', level: 90 },
-            { name: 'Java', level: 75 },
-            { name: 'C++', level: 72 },
-            { name: 'C', level: 70 },
-            { name: 'SQL', level: 78 },
+            { name: 'JavaScript', level: 90, icon: 'https://cdn.simpleicons.org/javascript' },
+            { name: 'Java', level: 75, icon: 'https://cdn.simpleicons.org/openjdk/white' },
+            { name: 'C++', level: 72, icon: 'https://cdn.simpleicons.org/cplusplus' },
+            { name: 'C', level: 70, icon: 'https://cdn.simpleicons.org/c' },
+            { name: 'SQL', level: 78, icon: 'https://cdn.simpleicons.org/mysql/white' },
         ],
     },
     {
         title: 'Frontend',
         color: 'oklch(0.65 0.22 145)',
         skills: [
-            { name: 'React.js', level: 88 },
-            { name: 'HTML & CSS', level: 92 },
-            { name: 'Tailwind CSS', level: 85 },
-            { name: 'PHP', level: 65 },
+            { name: 'React.js', level: 88, icon: 'https://cdn.simpleicons.org/react' },
+            { name: 'HTML & CSS', level: 92, icon: 'https://cdn.simpleicons.org/html5' },
+            { name: 'Tailwind CSS', level: 85, icon: 'https://cdn.simpleicons.org/tailwindcss' },
+            { name: 'PHP', level: 65, icon: 'https://cdn.simpleicons.org/php' },
         ],
     },
     {
         title: 'Backend & Database',
         color: 'oklch(0.65 0.18 160)',
         skills: [
-            { name: 'Node.js', level: 85 },
-            { name: 'Express.js', level: 82 },
-            { name: 'MongoDB', level: 82 },
-            { name: 'MySQL', level: 78 },
+            { name: 'Node.js', level: 85, icon: 'https://cdn.simpleicons.org/nodedotjs' },
+            { name: 'Express.js', level: 82, icon: 'https://cdn.simpleicons.org/express/white' },
+            { name: 'MongoDB', level: 82, icon: 'https://cdn.simpleicons.org/mongodb' },
+            { name: 'MySQL', level: 78, icon: 'https://cdn.simpleicons.org/mysql' },
         ],
     },
     {
         title: 'Tools & Platforms',
         color: 'oklch(0.68 0.20 270)',
         skills: [
-            { name: 'Git & GitHub', level: 88 },
-            { name: 'VS Code', level: 95 },
-            { name: 'REST APIs', level: 85 },
-            { name: 'Razorpay API', level: 72 },
-            { name: 'Gemini API', level: 70 },
+            { name: 'Git & GitHub', level: 88, icon: 'https://cdn.simpleicons.org/github/white' },
+            { name: 'VS Code', level: 95, icon: 'https://cdn.simpleicons.org/visualstudiocode' },
+            { name: 'REST APIs', level: 85, icon: 'https://cdn.simpleicons.org/postman' },
+            { name: 'Razorpay API', level: 72, icon: 'https://cdn.simpleicons.org/razorpay/3395FF' },
+            { name: 'Gemini API', level: 70, icon: 'https://cdn.simpleicons.org/googlegemini' },
         ],
     },
 ];
@@ -50,10 +50,13 @@ const TECH_ICONS = [
     'HTML', 'CSS', 'PHP', 'Git', 'GitHub',
     'LeetCode', 'GFG', 'DSA', 'VS Code',
 ];
-function SkillBar({ name, level, color, animate }) {
+function SkillBar({ name, level, color, animate, icon }) {
     return (<div className="group">
       <div className="flex justify-between items-center mb-1.5">
-        <span className="text-sm font-medium text-foreground">{name}</span>
+        <div className="flex items-center gap-2">
+          {icon && <img src={icon} alt={`${name} logo`} className="w-4 h-4 object-contain brightness-90 group-hover:brightness-110 group-hover:scale-110 transition-all" aria-hidden="true" />}
+          <span className="text-sm font-medium text-foreground">{name}</span>
+        </div>
         <span className="text-xs font-mono text-muted-foreground">{level}%</span>
       </div>
       <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
