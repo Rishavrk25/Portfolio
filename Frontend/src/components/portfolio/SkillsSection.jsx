@@ -37,7 +37,7 @@ const SKILL_CATEGORIES = [
         color: 'oklch(0.68 0.20 270)',
         skills: [
             { name: 'Git & GitHub', level: 88, icon: 'https://cdn.simpleicons.org/github/white' },
-            { name: 'VS Code', level: 95, icon: 'https://cdn.simpleicons.org/visualstudio' },
+            { name: 'VS Code', level: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
             { name: 'REST APIs', level: 85, icon: 'https://cdn.simpleicons.org/postman' },
             { name: 'Razorpay API', level: 72, icon: 'https://cdn.simpleicons.org/razorpay/3395FF' },
             { name: 'Gemini API', level: 70, icon: 'https://cdn.simpleicons.org/googlegemini' },
