@@ -59,8 +59,8 @@ function SkillBar({ name, level, color, animate }) {
       <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
         <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{
             width: animate ? `${level}%` : '0%',
-            background: `linear-gradient(90deg, ${color}, ${color}cc)`,
-            boxShadow: animate ? `0 0 8px ${color}60` : 'none',
+            background: `linear-gradient(90deg, ${color}, ${color.replace(')', ' / 0.8)')})`,
+            boxShadow: animate ? `0 0 8px ${color.replace(')', ' / 0.4)')}` : 'none',
         }}/>
       </div>
     </div>);
@@ -96,7 +96,7 @@ export default function SkillsSection() {
           {SKILL_CATEGORIES.map((cat, catIdx) => (<div key={cat.title} className={`glass-card rounded-2xl p-6 border-border/50 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1 ${animate ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: `${catIdx * 120}ms` }}>
               {/* Category header */}
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full animate-pulse-glow" style={{ background: cat.color, boxShadow: `0 0 10px ${cat.color}80` }} aria-hidden="true"/>
+                <div className="w-3 h-3 rounded-full animate-pulse-glow" style={{ background: cat.color, boxShadow: `0 0 10px ${cat.color.replace(')', ' / 0.5)')}` }} aria-hidden="true"/>
                 <h3 className="text-lg font-semibold text-foreground">{cat.title}</h3>
               </div>
               <div className="space-y-4">
