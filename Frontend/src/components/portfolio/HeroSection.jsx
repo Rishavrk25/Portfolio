@@ -180,17 +180,7 @@ export default function HeroSection({ onNavigate }) {
         </div>
       </div>
 
-      {/* Stats Bar */}
-      <div className="absolute bottom-16 left-0 right-0 z-10 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {STATS.map((stat, i) => (<div key={stat.label} className="glass-card rounded-xl p-4 text-center border-border/40 hover:border-primary/30 transition-all hover:scale-105" style={{ animationDelay: `${i * 150}ms` }}>
-                <div className="text-2xl font-bold gradient-text">{stat.value}</div>
-                <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
-              </div>))}
-          </div>
-        </div>
-      </div>
+      
 
       {/* Scroll indicator */}
       <button onClick={() => onNavigate('skills')} className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors group" aria-label="Scroll to skills">
