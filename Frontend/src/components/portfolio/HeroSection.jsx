@@ -139,15 +139,15 @@ export default function HeroSection({ onNavigate }) {
 
         {/* Right: Avatar / Visual */}
         <div className="flex justify-center lg:justify-end" style={{ perspective: '600px' }}>
-          <div ref={avatarRef} className="relative w-80 h-80 lg:w-[32rem] lg:h-[32rem] transition-transform duration-100" style={{ transformStyle: 'preserve-3d' }}>
+          <div ref={avatarRef} className="relative w-72 h-72 lg:w-96 lg:h-96 transition-transform duration-100" style={{ transformStyle: 'preserve-3d' }}>
             {/* Outer ring */}
             <div className="absolute inset-0 rounded-full border border-primary/20 animate-spin-slow" style={{
             background: 'conic-gradient(from 0deg, transparent 0%, oklch(0.72 0.22 200 / 0.15) 25%, transparent 50%, oklch(0.55 0.25 265 / 0.12) 75%, transparent 100%)',
         }} aria-hidden="true"/>
             {/* Middle ring */}
-            <div className="absolute inset-6 lg:inset-12 rounded-full border border-border/40" aria-hidden="true"/>
+            <div className="absolute inset-6 rounded-full border border-border/40" aria-hidden="true"/>
             {/* Avatar container */}
-            <div className="absolute inset-12 lg:inset-24 rounded-full glass-card glow-border overflow-hidden flex items-center justify-center">
+            <div className="absolute inset-10 rounded-full glass-card glow-border overflow-hidden flex items-center justify-center">
               <div className="absolute inset-0 rounded-full" style={{
             background: 'radial-gradient(circle at 30% 30%, oklch(0.72 0.22 200 / 0.15), oklch(0.55 0.25 265 / 0.1) 50%, transparent)',
         }} aria-hidden="true"/>
@@ -160,10 +160,10 @@ export default function HeroSection({ onNavigate }) {
 
             {/* Floating tech badges */}
             {[
-            { label: 'React', angle: -30, dist: 256, color: '#61DAFB' },
-            { label: 'Node.js', angle: 60, dist: 256, color: '#68A063' },
-            { label: 'MongoDB', angle: 150, dist: 256, color: '#47A248' },
-            { label: 'Express', angle: 240, dist: 256, color: '#94a3b8' },
+            { label: 'React', angle: -30, dist: 120, color: '#61DAFB' },
+            { label: 'Node.js', angle: 60, dist: 115, color: '#68A063' },
+            { label: 'MongoDB', angle: 150, dist: 120, color: '#47A248' },
+            { label: 'Express', angle: 240, dist: 115, color: '#94a3b8' },
         ].map(({ label, angle, dist, color }) => {
             const rad = (angle * Math.PI) / 180;
             const x = Math.cos(rad) * dist;
