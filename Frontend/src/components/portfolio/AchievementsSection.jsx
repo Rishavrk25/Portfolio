@@ -9,7 +9,7 @@ const ACHIEVEMENTS = [
         description: 'Consistently solved algorithmic challenges across LeetCode and GFG, covering arrays, trees, graphs, DP, and recursion to sharpen problem-solving skills.',
         color: 'oklch(0.75 0.22 60)',
         badge: 'gold',
-        link: '#',
+        link: 'https://codolio.com/profile/Rishavrk',
     },
     {
         icon: Star,
@@ -18,7 +18,7 @@ const ACHIEVEMENTS = [
         description: 'Achieved a 1500+ contest rating on LeetCode through regular participation in weekly and biweekly contests, demonstrating consistent competitive programming performance.',
         color: 'oklch(0.72 0.22 200)',
         badge: 'cyan',
-        link: '#',
+        link: 'https://leetcode.com/u/Rishav_3/',
     },
     {
         icon: Code,
@@ -29,15 +29,15 @@ const ACHIEVEMENTS = [
         badge: 'green',
         link: null,
     },
-    {
-        icon: Medal,
-        title: 'DSA Summer Training',
-        org: 'CipherSchools — Jul 2025',
-        description: 'Successfully completed comprehensive DSA training covering advanced algorithms, time-space complexity analysis, and structured problem-solving on LeetCode and GFG.',
-        color: 'oklch(0.68 0.20 270)',
-        badge: 'blue',
-        link: '#',
-    },
+    // {
+    //     icon: Medal,
+    //     title: 'DSA Summer Training',
+    //     org: 'CipherSchools — Jul 2025',
+    //     description: 'Successfully completed comprehensive DSA training covering advanced algorithms, time-space complexity analysis, and structured problem-solving on LeetCode and GFG.',
+    //     color: 'oklch(0.68 0.20 270)',
+    //     badge: 'blue',
+    //     link: '#',
+    // },
     {
         icon: GraduationCap,
         title: 'B.Tech CSE — CGPA 8.9',
@@ -47,15 +47,15 @@ const ACHIEVEMENTS = [
         badge: 'purple',
         link: null,
     },
-    {
-        icon: Zap,
-        title: 'Cloud Computing Certified',
-        org: 'NPTEL — IIT Faculty',
-        description: 'Earned NPTEL Cloud Computing certification from IIT/IISc faculty, covering virtualization, distributed systems, service models and cloud deployment strategies.',
-        color: 'oklch(0.72 0.22 30)',
-        badge: 'orange',
-        link: '#',
-    },
+    // {
+    //     icon: Zap,
+    //     title: 'Cloud Computing Certified',
+    //     org: 'NPTEL — IIT Faculty',
+    //     description: 'Earned NPTEL Cloud Computing certification from IIT/IISc faculty, covering virtualization, distributed systems, service models and cloud deployment strategies.',
+    //     color: 'oklch(0.72 0.22 30)',
+    //     badge: 'orange',
+    //     link: '#',
+    // },
 ];
 const COUNTER_STATS = [
     { value: 500, suffix: '+', label: 'DSA Problems Solved' },

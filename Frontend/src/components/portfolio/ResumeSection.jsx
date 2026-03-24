@@ -87,7 +87,7 @@ export default function ResumeSection() {
 
         {/* Download button */}
         <div className="flex justify-center mb-10">
-          <a href="#" className="flex items-center gap-2 px-7 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/25">
+          <a href="https://drive.google.com/file/d/1j8jF9npS1Vzr2cCQF5atEuCx3djvWAsE/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-7 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 cursor-pointer">
             <Download className="w-4 h-4" aria-hidden="true"/>
             Download Full Resume (PDF)
           </a>

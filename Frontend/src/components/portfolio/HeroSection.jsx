@@ -6,7 +6,7 @@ const TYPED_STRINGS = [
     'MERN Stack Engineer',
     'React.js Developer',
     'Node.js Developer',
-    'DSA Problem Solver',
+    'Problem Solver',
 ];
 const STATS = [
     { value: '500+', label: 'DSA Problems Solved' },
@@ -114,13 +114,13 @@ export default function HeroSection({ onNavigate }) {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
-            <button onClick={() => onNavigate('projects')} className="px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/25">
+            <button onClick={() => onNavigate('projects')} className="px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 cursor-pointer">
               View My Work
             </button>
-            <button onClick={() => onNavigate('resume')} className="px-6 py-3 rounded-xl bg-secondary border border-border text-foreground font-semibold text-sm hover:border-primary/50 hover:bg-primary/5 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+            <a href="https://drive.google.com/file/d/1j8jF9npS1Vzr2cCQF5atEuCx3djvWAsE/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-xl bg-secondary border border-border text-foreground font-semibold text-sm hover:border-primary/50 hover:bg-primary/5 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
               <Download className="w-4 h-4" aria-hidden="true"/>
               Download CV
-            </button>
+            </a>
           </div>
 
           {/* Socials */}

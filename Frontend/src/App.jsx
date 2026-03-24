@@ -15,6 +15,8 @@ const SECTIONS = ['home', 'skills', 'projects', 'certifications', 'achievements'
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home')
+  const [chatbotOpen, setChatbotOpen] = useState(false)
+  const [whatsappOpen, setWhatsappOpen] = useState(false)
 
   // Track active section on scroll
   useEffect(() => {
@@ -57,8 +59,8 @@ export default function App() {
       <AchievementsSection />
       <ResumeSection />
       <ContactSection />
-      <Chatbot />
-      <WhatsAppWidget />
+      <Chatbot isOpen={chatbotOpen} setIsOpen={setChatbotOpen} />
+      <WhatsAppWidget isOpen={whatsappOpen} setIsOpen={setWhatsappOpen} />
     </main>
   )
 }

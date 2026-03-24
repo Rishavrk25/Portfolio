@@ -6,7 +6,7 @@ const SKILL_CATEGORIES = [
         color: 'oklch(0.72 0.22 200)',
         skills: [
             { name: 'JavaScript', level: 90, icon: 'https://cdn.simpleicons.org/javascript' },
-            { name: 'Java', level: 75, icon: 'https://cdn.simpleicons.org/openjdk/white' },
+            { name: 'Java', level: 90, icon: 'https://cdn.simpleicons.org/openjdk/white' },
             { name: 'C++', level: 72, icon: 'https://cdn.simpleicons.org/cplusplus' },
             { name: 'C', level: 70, icon: 'https://cdn.simpleicons.org/c' },
             { name: 'SQL', level: 78, icon: 'https://cdn.simpleicons.org/mysql/white' },
@@ -30,6 +30,7 @@ const SKILL_CATEGORIES = [
             { name: 'Express.js', level: 82, icon: 'https://cdn.simpleicons.org/express/white' },
             { name: 'MongoDB', level: 82, icon: 'https://cdn.simpleicons.org/mongodb' },
             { name: 'MySQL', level: 78, icon: 'https://cdn.simpleicons.org/mysql' },
+            { name: 'JWT Auth', level: 80, icon: 'https://cdn.simpleicons.org/jsonwebtokens/white' },
         ],
     },
     {
@@ -48,25 +49,31 @@ const TECH_ICONS = [
     'React.js', 'Node.js', 'MongoDB', 'Express.js', 'JavaScript',
     'Java', 'C++', 'SQL', 'MySQL', 'Tailwind CSS',
     'HTML', 'CSS', 'PHP', 'Git', 'GitHub',
-    'LeetCode', 'GFG', 'DSA', 'VS Code',
+    'LeetCode', 'GFG', 'DSA', 'VS Code', 'JWT Auth'
 ];
 function SkillBar({ name, level, color, animate, icon }) {
-    return (<div className="group">
-      <div className="flex justify-between items-center mb-1.5">
-        <div className="flex items-center gap-2">
-          {icon && <img src={icon} alt={`${name} logo`} className="w-4 h-4 object-contain brightness-90 group-hover:brightness-110 group-hover:scale-110 transition-all" aria-hidden="true" />}
-          <span className="text-sm font-medium text-foreground">{name}</span>
+    return (
+        <div className="group flex items-center gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-all duration-200">
+            {/* Icon */}
+            <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${color}18`, border: `1px solid ${color}30` }}>
+                {icon && <img src={icon} alt={`${name} logo`} className="w-6 h-6 object-contain brightness-90 group-hover:brightness-110 group-hover:scale-110 transition-all duration-300" />}
+            </div>
+            {/* Name + bar */}
+            <div className="flex-1 min-w-0">
+                <div className="flex justify-between items-center mb-2">
+                    <span className="text-base font-semibold text-foreground group-hover:text-white transition-colors">{name}</span>
+                    <span className="text-xs font-mono tabular-nums" style={{ color }}>{level}%</span>
+                </div>
+                <div className="h-2 w-full bg-secondary/80 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{
+                        width: animate ? `${level}%` : '0%',
+                        background: `linear-gradient(90deg, ${color}, ${color.replace(')', ' / 0.75)')})`,
+                        boxShadow: animate ? `0 0 10px ${color.replace(')', ' / 0.5)')}` : 'none',
+                    }}/>
+                </div>
+            </div>
         </div>
-        <span className="text-xs font-mono text-muted-foreground">{level}%</span>
-      </div>
-      <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-        <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{
-            width: animate ? `${level}%` : '0%',
-            background: `linear-gradient(90deg, ${color}, ${color.replace(')', ' / 0.8)')})`,
-            boxShadow: animate ? `0 0 8px ${color.replace(')', ' / 0.4)')}` : 'none',
-        }}/>
-      </div>
-    </div>);
+    );
 }
 export default function SkillsSection() {
     const sectionRef = useRef(null);
@@ -126,17 +133,23 @@ export default function SkillsSection() {
         <div className={`grid gap-6 mb-16 transition-all duration-500 min-h-[300px] ${
           displayedCategories.length === 1 ? 'max-w-2xl mx-auto' : 'md:grid-cols-2'
         }`}>
-          {displayedCategories.map((cat, catIdx) => (
-            <div 
-              key={`${cat.title}-${activeFilter}`} // Forces re-render on filter change for animation
-              className={`glass-card rounded-2xl p-6 border-border/50 transition-all duration-500 animate-slide-up flex flex-col`}
+          {displayedCategories.map((cat) => (
+            <div
+              key={`${cat.title}-${activeFilter}`}
+              className="glass-card rounded-2xl border-border/50 transition-all duration-500 animate-slide-up overflow-hidden"
             >
+              {/* Colored top bar */}
+              <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${cat.color}, ${cat.color.replace(')', ' / 0.3)')})` }} />
               {/* Category header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full animate-pulse-glow" style={{ background: cat.color, boxShadow: `0 0 10px ${cat.color.replace(')', ' / 0.5)')}` }} aria-hidden="true"/>
-                <h3 className="text-lg font-semibold text-foreground">{cat.title}</h3>
+              <div className="flex items-center gap-3 px-6 pt-5 pb-4 border-b border-border/30">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${cat.color}22`, boxShadow: `0 0 12px ${cat.color.replace(')', ' / 0.3)')}` }}>
+                  <div className="w-3 h-3 rounded-full" style={{ background: cat.color }} />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">{cat.title}</h3>
+                <span className="ml-auto text-xs font-mono text-muted-foreground">{cat.skills.length} skills</span>
               </div>
-              <div className="space-y-4">
+              {/* Skills list */}
+              <div className="px-4 py-3 space-y-1">
                 {cat.skills.map((skill) => (<SkillBar key={skill.name} {...skill} color={cat.color} animate={animate}/>))}
               </div>
             </div>

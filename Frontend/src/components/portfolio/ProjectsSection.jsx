@@ -1,10 +1,17 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { ExternalLink, Github, Star, Calendar, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, Star, Calendar, ChevronRight, ChevronLeft } from 'lucide-react';
 const PROJECTS = [
     {
         title: 'E-Commerce Platform',
         description: 'A complete full-stack e-commerce website built for an international client with product catalog management and secure payment integration.',
+        images: [
+            '/ecommerce/Screenshot (123).png',
+            '/ecommerce/Screenshot (124).png',
+            '/ecommerce/Screenshot (125).png',
+            '/ecommerce/Screenshot (126).png',
+            '/ecommerce/Screenshot (127).png',
+        ],
         points: [
             'Developed product catalog management with secure user authentication (login/signup).',
             'Integrated Razorpay payment gateway for seamless online transactions.',
@@ -51,7 +58,75 @@ const PROJECTS = [
         githubUrl: 'https://github.com/Rishavrk25',
     },
 ];
-const CATEGORIES = ['All', 'Full Stack', 'AI', 'Web App'];
+const CATEGORIES = ['All', 'Full Stack', 'AI'];
+
+function ProjectSlideshow({ images }) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        if (images.length <= 1) return;
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [images.length]);
+
+    const nextSlide = (e) => {
+        e.stopPropagation();
+        setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    };
+
+    const prevSlide = (e) => {
+        e.stopPropagation();
+        setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    };
+
+    return (
+        <div className="relative w-full h-48 sm:h-56 overflow-hidden group/slider border-b border-border/20 bg-muted/20">
+            {images.map((src, i) => (
+                <img
+                    key={src}
+                    src={src}
+                    alt={`Slide ${i + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ${i === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                />
+            ))}
+            
+            {/* Bottom gradient for indicators */}
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
+
+            {images.length > 1 && (
+                <div className="z-20 absolute inset-0 pointer-events-none">
+                    <button 
+                        onClick={prevSlide}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/40 text-white/90 opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-black/60 hover:text-white pointer-events-auto backdrop-blur-sm"
+                        aria-label="Previous image"
+                    >
+                        <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button 
+                        onClick={nextSlide}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/40 text-white/90 opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-black/60 hover:text-white pointer-events-auto backdrop-blur-sm"
+                        aria-label="Next image"
+                    >
+                        <ChevronRight className="w-5 h-5" />
+                    </button>
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-auto">
+                        {images.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={(e) => { e.stopPropagation(); setCurrentIndex(i); }}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-white w-4' : 'bg-white/50 w-1.5 hover:bg-white/75'}`}
+                                aria-label={`Go to slide ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
 export default function ProjectsSection() {
     const sectionRef = useRef(null);
     const [animate, setAnimate] = useState(false);
@@ -98,6 +173,11 @@ export default function ProjectsSection() {
                 background: project.color,
                 boxShadow: hoveredId === project.title ? `0 0 20px ${project.color}60` : 'none',
             }} aria-hidden="true"/>
+
+              {/* Slideshow */}
+              {project.images && project.images.length > 0 && (
+                  <ProjectSlideshow images={project.images} />
+              )}
 
               <div className="p-6 flex flex-col h-full">
                 {/* Badge + Period */}

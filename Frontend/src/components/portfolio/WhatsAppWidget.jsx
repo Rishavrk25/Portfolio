@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-export default function WhatsAppWidget() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function WhatsAppWidget({ isOpen, setIsOpen }) {
 
   const whatsappIcon = (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -11,10 +10,10 @@ export default function WhatsAppWidget() {
   );
 
   return (
-    <div className="fixed bottom-6 left-6 z-[60] flex flex-col items-start font-sans">
+    <div className="fixed bottom-6 right-25 z-[60] pointer-events-none flex flex-col items-end font-sans">
       {/* Chat Window */}
       <div 
-        className={`bg-[#e5ddd5] w-[320px] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 origin-bottom-left mb-4 flex flex-col relative ${isOpen ? 'scale-100 opacity-100' : 'scale-50 opacity-0 pointer-events-none'}`}
+        className={`bg-[#e5ddd5] w-[320px] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 origin-bottom-right mb-4 flex flex-col relative pointer-events-auto ${isOpen ? 'scale-100 opacity-100' : 'scale-50 opacity-0 !pointer-events-none'}`}
       >
         {/* Background Pattern Overlay */}
         <div 
@@ -43,15 +42,15 @@ export default function WhatsAppWidget() {
         </div>
         
         {/* Chat Body */}
-        <div className="pt-4 px-5 pb-6 flex flex-col gap-2.5 relative z-10 min-h-[160px]">
-           <div className="flex justify-center mb-1">
+        <div className="pt-3 px-4 pb-3 flex flex-col gap-2 relative z-10 min-h-[80px]">
+           <div className="flex justify-center mb-0.5">
              <span className="text-[11px] text-gray-500 font-medium">11:20</span>
            </div>
            
-           <div className="bg-white text-[#111b21] rounded-2xl rounded-tl-none py-2 px-3.5 text-[14px] shadow-sm max-w-[85%] w-fit self-start">
+           <div className="bg-white text-[#111b21] rounded-2xl rounded-tl-none py-1.5 px-3 text-[13px] shadow-sm max-w-[85%] w-fit self-start">
              Hi there 👋
            </div>
-           <div className="bg-white text-[#111b21] rounded-2xl rounded-tl-[4px] py-2 px-3.5 text-[14px] shadow-sm max-w-[85%] w-fit self-start">
+           <div className="bg-white text-[#111b21] rounded-2xl rounded-tl-[4px] py-1.5 px-3 text-[13px] shadow-sm max-w-[85%] w-fit self-start">
              How can I help you?
            </div>
         </div>
@@ -73,7 +72,7 @@ export default function WhatsAppWidget() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-[60px] h-[60px] bg-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-[#25D366] relative"
+        className="w-[60px] h-[60px] bg-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-[#25D366] relative pointer-events-auto"
         aria-label="Toggle WhatsApp chat window"
       >
         <div className="scale-150">

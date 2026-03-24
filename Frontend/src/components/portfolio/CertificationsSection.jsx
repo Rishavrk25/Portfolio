@@ -10,7 +10,7 @@ const CERTIFICATIONS = [
         color: 'oklch(0.72 0.22 200)',
         description: 'Comprehensive training covering MongoDB, Express.js, React, and Node.js to build production-grade full-stack web applications.',
         verified: true,
-        link: '#',
+        link: 'https://drive.google.com/file/d/14KA4R1q_J7IdLjQoOwk87wfx0TxVbM9V/view?usp=drive_link',
     },
     {
         title: 'Cloud Computing Certification',
@@ -20,7 +20,7 @@ const CERTIFICATIONS = [
         color: 'oklch(0.68 0.20 270)',
         description: 'Core cloud computing concepts including service models (IaaS, PaaS, SaaS), virtualization, and distributed systems from IIT/IISc faculty.',
         verified: true,
-        link: '#',
+        link: 'https://drive.google.com/file/d/1GgfyiR4_hgo6IYu1RQ2dUzNsrIJlrZcM/view?usp=drive_link',
     },
     {
         title: 'Data Structures & Algorithms Training',
@@ -30,7 +30,7 @@ const CERTIFICATIONS = [
         color: 'oklch(0.65 0.22 145)',
         description: 'Covered arrays, linked lists, trees, graphs, recursion, DP, and time-complexity optimization. Hands-on practice on LeetCode and GFG.',
         verified: true,
-        link: '#',
+        link: 'https://drive.google.com/file/d/1G5lMe7eDpO9dKroCrbjVCBUcI2nNQA9d/view?usp=drive_link',
     },
 ];
 export default function CertificationsSection() {
