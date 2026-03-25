@@ -40,12 +40,18 @@ if (process.env.MONGO_URI) {
 // Nodemailer Transporter Setup
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
-  }
+  },
+  tls: {
+    rejectUnauthorized: false
+  },
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 15000
 });
 
 // Verify email configuration on startup
@@ -76,11 +82,14 @@ app.post('/api/contact', async (req, res) => {
       await newContact.save();
     }
 
-    // Try sending emails if EMAIL_USER is configured
+    // Respond immediately to the user
+    console.log('New contact form submission processed:', { name, email });
+    res.status(200).json({ success: true, message: 'Message received successfully' });
+
+    // Send emails in the background (non-blocking)
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      // 1. Admin Notification (Send to yourself)
       const adminMailOptions = {
-        from: `"${name}" <${process.env.EMAIL_USER}>`, // Sending through authenticated user
+        from: `"${name}" <${process.env.EMAIL_USER}>`,
         replyTo: email,
         to: process.env.EMAIL_USER,
         subject: `[Portfolio Contact] ${subject || 'New Message'}`,
@@ -95,7 +104,6 @@ app.post('/api/contact', async (req, res) => {
         `
       };
 
-      // 2. User Auto-Reply
       const userMailOptions = {
         from: `"Rishav Kumar" <${process.env.EMAIL_USER}>`,
         to: email,
@@ -113,17 +121,15 @@ app.post('/api/contact', async (req, res) => {
         `
       };
 
-      await Promise.all([
+      Promise.all([
         transporter.sendMail(adminMailOptions),
         transporter.sendMail(userMailOptions)
-      ]);
-      console.log(`Emails successfully sent for: ${name}`);
+      ])
+        .then(() => console.log(`Emails successfully sent for: ${name}`))
+        .catch(err => console.error('Email sending failed:', err.message));
     }
-
-    console.log('New contact form submission processed:', { name, email });
-    res.status(200).json({ success: true, message: 'Message received and emails sent successfully' });
   } catch (error) {
-    console.error('Error saving contact or sending emails:', error);
+    console.error('Error saving contact:', error);
     res.status(500).json({ success: false, message: 'Server Error processing your request' });
   }
 });

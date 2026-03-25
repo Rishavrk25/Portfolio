@@ -18,7 +18,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'https://portfolio-backend-yklu.onrender.com'
+      '/api': 'http://localhost:5000'
     }
   }
 })
