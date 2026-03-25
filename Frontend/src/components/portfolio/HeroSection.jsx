@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowDown, Github, Linkedin, Download, Sparkles } from 'lucide-react';
 const TYPED_STRINGS = [
     'Full Stack Developer',
@@ -20,7 +20,7 @@ export default function HeroSection({ onNavigate }) {
     const [charIndex, setCharIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [visible, setVisible] = useState(false);
-    const avatarRef = useRef(null);
+
     // Typed effect
     useEffect(() => {
         setVisible(true);
@@ -50,21 +50,7 @@ export default function HeroSection({ onNavigate }) {
         }, delay);
         return () => clearTimeout(timer);
     }, [charIndex, isDeleting, stringIndex]);
-    // Mouse parallax on avatar
-    useEffect(() => {
-        const handleMouse = (e) => {
-            if (!avatarRef.current)
-                return;
-            const rect = avatarRef.current.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            const dx = (e.clientX - cx) / 30;
-            const dy = (e.clientY - cy) / 30;
-            avatarRef.current.style.transform = `perspective(600px) rotateY(${dx}deg) rotateX(${-dy}deg)`;
-        };
-        window.addEventListener('mousemove', handleMouse);
-        return () => window.removeEventListener('mousemove', handleMouse);
-    }, []);
+
     return (<section id="home" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden" aria-label="Hero section">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 grid-pattern opacity-40 pointer-events-none" aria-hidden="true"/>
@@ -138,10 +124,10 @@ export default function HeroSection({ onNavigate }) {
         </div>
 
         {/* Right: Avatar / Visual */}
-        <div className="flex justify-center lg:justify-end" style={{ perspective: '600px' }}>
-          <div ref={avatarRef} className="relative w-72 h-72 lg:w-96 lg:h-96 transition-transform duration-100" style={{ transformStyle: 'preserve-3d' }}>
+        <div className="flex justify-center lg:justify-end">
+          <div className="relative w-72 h-72 lg:w-96 lg:h-96">
             {/* Outer ring */}
-            <div className="absolute inset-0 rounded-full border border-primary/20 animate-spin-slow" style={{
+            <div className="absolute inset-0 rounded-full border border-primary/20" style={{
             background: 'conic-gradient(from 0deg, transparent 0%, oklch(0.72 0.22 200 / 0.15) 25%, transparent 50%, oklch(0.55 0.25 265 / 0.12) 75%, transparent 100%)',
         }} aria-hidden="true"/>
             {/* Middle ring */}
