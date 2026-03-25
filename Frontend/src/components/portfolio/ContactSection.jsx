@@ -59,10 +59,7 @@ export default function ContactSection() {
             }
         } catch (error) {
             console.error('Failed to send message:', error);
-            // Fallback for user experience if server fails
-            setSent(true);
-            setForm({ name: '', email: '', subject: '', message: '' });
-            setTimeout(() => setSent(false), 4000);
+            alert('Failed to send message. Please try again or email directly.');
         } finally {
             setSending(false);
         }

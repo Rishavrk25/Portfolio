@@ -39,7 +39,9 @@ if (process.env.MONGO_URI) {
 
 // Nodemailer Transporter Setup
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -50,7 +52,7 @@ const transporter = nodemailer.createTransport({
 if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
   transporter.verify((error) => {
     if (error) {
-      console.error('Nodemailer configuration error:', error);
+      console.error('Nodemailer configuration error:', error.message);
     } else {
       console.log('Nodemailer is ready to send messages');
     }
@@ -58,6 +60,11 @@ if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
 } else {
   console.log('EMAIL_USER or EMAIL_PASS not provided. Form submissions will not trigger emails.');
 }
+
+// Health check route
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'Portfolio backend is running' });
+});
 
 // API Routes
 app.post('/api/contact', async (req, res) => {
